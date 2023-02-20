@@ -6,3 +6,7 @@ header{
      background-size: cover;
      background-position-y: -350px;
 }
+
+.agenceImg{
+     width: 15% !important;
+}
