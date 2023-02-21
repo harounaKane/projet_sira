@@ -16,12 +16,16 @@
     </head>
     <body>
         <header class="text-center">
-            <h1 class="pt-5">Bienvenu à bord</h1>
+            <h1 class="pt-5"> <a href="{{ path('app_home_index') }}" class="text-dark"> Bienvenu à bord</a></h1>
             <h2>Location de véhicule 24H/24 et 7j/7</h2>
 
             <nav>
                 <a href="" class="btn btn-success">Inscription</a>
                 <a href="" class="btn btn-success">Connexion</a>
+                <a href="" class="btn btn-success">Membre</a>
+                <a href="{{ path('app_agence_index') }}" class="btn btn-success">Agence</a>
+                <a href="{{ path('app_voiture_index') }}" class="btn btn-success">Voiture</a>
+                <a href="" class="btn btn-success">Compte</a>
             </nav>
 
         </header>

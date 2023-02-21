@@ -3,7 +3,9 @@
 {% block title %}Agence index{% endblock %}
 
 {% block body %}
-    <h1>Agence index</h1>
+    <h1>Agence</h1>
+
+    <a href="{{ path('app_agence_new') }}" class="btn btn-success my-3">Ajouter une agence</a>
 
     <table class="table table-strepid">
         <thead>
@@ -39,5 +41,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_agence_new') }}">Create new</a>
+    
 {% endblock %}

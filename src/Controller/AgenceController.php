@@ -29,6 +29,12 @@ class AgenceController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $image = $form->get('photo')->getData(); 
+            $file_name = $agence->getTitre().'.'. $image->guessExtension();
+            $agence->setPhoto($file_name);
+
+            $image->move($this->getParameter("agence_directory"), $file_name);
+
             $agenceRepository->save($agence, true);
 
             return $this->redirectToRoute('app_agence_index', [], Response::HTTP_SEE_OTHER);
