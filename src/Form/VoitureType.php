@@ -17,13 +17,14 @@ class VoitureType extends AbstractType
             ->add('titre')
             ->add('marque')
             ->add('description')
-            ->add('photo', FileType::class, [
+            ->add('fichier', FileType::class, [
                 "attr" => [
                     "accept" => "image/*"
                 ],
                 'data_class' => null,
                 'required' => false,
-                'empty_data' => "update"
+                'empty_data' => "update",
+                "mapped" => false
             ])
             ->add('prix')
             ->add('agence')

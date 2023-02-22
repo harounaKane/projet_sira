@@ -16,10 +16,11 @@ class AgenceType extends AbstractType
             ->add('titre')
             ->add('ville')
             ->add('description')
-            ->add('photo', FileType::class, [
+            ->add('fichier', FileType::class, [
                 "attr" => [
                     "accept" => "image/*"
-                ]
+                ],
+                "mapped" => false
             ])
         ;
     }

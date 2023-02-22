@@ -60,16 +60,29 @@ class VoitureController extends AbstractController
     public function edit(Voiture $voiture, Request $request, VoitureRepository $repo){
         $form = $this->createForm(VoitureType::class, $voiture);
         $form->handleRequest($request);
-
         if( $form->isSubmitted() && $form->isValid() ){
-            //SI PAS NEW IMG, ON GARDE L'IMAGE EN BD
-            if( $voiture->getPhoto() == 'update' ) {
-                dump($voiture);
-                dump($repo->find($voiture->getId() ));
-                $voiture->setPhoto( $repo->find($voiture->getId() )->getPhoto() );
-                dd($voiture);
+       
+            //SI NEW IMG, ON DELETE L'ANCIENNE IMAGE PHYSIQUEMENT
+            $image = $form->get('fichier')->getData();
+       
+            if( strcmp($image, "update") != 0 ) {
+                if( file_exists($this->getParameter('voiture_directory').'/'.$voiture->getPhoto()) ){
+                    unlink($this->getParameter('voiture_directory').'/'.$voiture->getPhoto());
+
+                    $file_name = $voiture->getTitre() .'_'. md5(uniqid()).'.'. $image->guessExtension();
+
+                    $image->move(
+                        $this->getParameter("voiture_directory"), 
+                        $file_name
+                    );
+        
+                    $voiture->setPhoto($file_name);
+                }
+               
             }
             $repo->save($voiture, true);
+
+            return $this->redirectToRoute('app_voiture_index');
         }
 
         return $this->renderform('voiture/edit.html.twig', [
