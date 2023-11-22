@@ -1,6 +1,6 @@
 <?php 
 
-include "_inc.php";
+include "_moiAussi.php";
 
 
 
