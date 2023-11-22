@@ -1,6 +1,8 @@
 <?php 
 
-include "_include.php";
+
+include "_inc.php";
+
 
 
 
