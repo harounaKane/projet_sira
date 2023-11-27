@@ -10,38 +10,50 @@
     
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="public/css/style.css">
-     <title>Projet SIRA</title>
+     <title>Projet SIRA - <?= $title ?? "" ?> </title>
 </head>
 <body>
      <header class="bg-dark p-4 mb-3">
-          <h1><a href="." class="text-light">Sira</a></h1>
-          <div class="m-2 text-center">
-               <a href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#logonModal">Inscription</a>
-               <a href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#loginModal">Connexion</a>
+          <div class="d-flex justify-content-between align-items-center">
+               <h1><a href="." class="text-light">Sira</a></h1>
+               <div class="text-light text-end"> <?= $_SESSION['user']['prenom'] ?? '' ?> </div>
           </div>
+          <?php if( !isConnected() ): ?>
+               <div class="m-2 text-center">
+                    <a href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#logonModal">Inscription</a>
+                    <a href="" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#loginModal">Connexion</a>
+               </div>
+          <?php endif; ?>
           <nav class="navbar navbar-expand-lg navbar-light bg-light">
                <div class="container-fluid">
                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                     <li class="nav-item dropdown">
-                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                         Gestion
-                       </a>
-                       <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                         <li>
-                              <a class="dropdown-item" href="?action=membre">Membre</a>
+                    <?php if( isAdmin() ): ?>
+                         <li class="nav-item dropdown">
+                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Gestion
+                         </a>
+                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <li>
+                                   <a class="dropdown-item" href=".?action=membre">Membre</a>
+                              </li>
+                              <li>
+                                   <a class="dropdown-item" href="agence.php?action=agence">Agence</a>
+                              </li>
+                              <li>
+                                   <a class="dropdown-item" href="?action=vehicule">Véhicule</a>
+                              </li>
+                              <li>
+                                   <a class="dropdown-item" href="?action=location">Location</a>
+                              </li>
+                         </ul>
                          </li>
-                         <li>
-                              <a class="dropdown-item" href="?action=agence">Agence</a>
+                    <?php endif; ?>
+                    <?php if( isConnected() ): ?>
+                         <li class="nav-item">
+                              <a class="nav-link" href=".?action=logout" tabindex="-1" aria-disabled="true">Deconnexion</a>
                          </li>
-                         <li>
-                              <a class="dropdown-item" href="?action=vehicule">Véhicule</a>
-                         </li>
-                         <li>
-                              <a class="dropdown-item" href="?action=location">Location</a>
-                         </li>
-                       </ul>
-                     </li>
+                    <?php endif; ?>
                      <li class="nav-item">
                        <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Contact</a>
                      </li>
@@ -118,7 +130,7 @@
                          </div>
      
                          <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                         <button type="submit" class="btn btn-primary">Envoyer</button>
+                         <button name="inscription" value="inscription" type="submit" class="btn btn-primary">Envoyer</button>
                     </form>
               </div>
               <div class="modal-footer">
@@ -152,7 +164,7 @@
                          
      
                          <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                         <button type="submit" class="btn btn-primary">Envoyer</button>
+                         <button name="connexion" value="connexion" type="submit" class="btn btn-primary">Envoyer</button>
                     </form>
               </div>
               <div class="modal-footer">
