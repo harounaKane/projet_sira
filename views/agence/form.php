@@ -50,23 +50,22 @@
 
 <script>
 
-     function prevImg(files){
-          let div = document.getElementById("img");
+     function prevImg(files) {
+          let div = document.getElementById('img'); 
           div.innerHTML = "";
           
-          for(let file of files ){
-               let reader = new FileReader();
+          for ( let file of files ) {
+          let reader = new FileReader();
+          
+          reader.addEventListener("load", function( event ) {
+               let span = document.createElement("span");
+               span.innerHTML = '<img height="100" src="' + event.target.result + '" />';
+               div.appendChild( span );
+          });
 
-               reader.addEventListener('load', function(event){
-                    let span = document.createElement("span");
-                    span.innerHTML = '<img height="100" scr="' + event.target.result +'"/>';
-                    div.appendChild(span);
-               });
-
-          reader.readAsDataURL(file);
-
+          reader.readAsDataURL( file );
           }
-
      }
+
      
 </script>
