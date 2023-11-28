@@ -41,7 +41,7 @@
                                    <a class="dropdown-item" href="agence.php?action=agence">Agence</a>
                               </li>
                               <li>
-                                   <a class="dropdown-item" href="?action=vehicule">Véhicule</a>
+                                   <a class="dropdown-item" href="vehicule.php">Véhicule</a>
                               </li>
                               <li>
                                    <a class="dropdown-item" href="?action=location">Location</a>
@@ -77,7 +77,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                    <form action="" method="post">
+                    <form action="membre.php" method="post">
                          <input type="hidden" name="idChambre" value="">
                          <div class="row">
                               <div class="form-group col-6">
@@ -149,7 +149,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                    <form action="" method="post">
+                    <form action="membre.php" method="post">
                          <div class="row mb-3">
                               <div class="form-group col-6">
                                    <label for="">Login</label>

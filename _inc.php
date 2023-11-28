@@ -9,7 +9,7 @@ include "config/bd.php";
  * prend en parametre une chaine qui est le query et un tableau associatif de données facultatif
  * renvoie le résultat de la requête
  */
-function executerRequete($query, $data = null){
+function executerRequete($query, $data = array()){
      global $pdo;
  
      $statement = $pdo->prepare($query);
