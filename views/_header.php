@@ -35,7 +35,7 @@
                          </a>
                          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                               <li>
-                                   <a class="dropdown-item" href=".?action=membre">Membre</a>
+                                   <a class="dropdown-item" href="membre.php?action=membre">Membre</a>
                               </li>
                               <li>
                                    <a class="dropdown-item" href="agence.php?action=agence">Agence</a>
@@ -51,7 +51,7 @@
                     <?php endif; ?>
                     <?php if( isConnected() ): ?>
                          <li class="nav-item">
-                              <a class="nav-link" href=".?action=logout" tabindex="-1" aria-disabled="true">Deconnexion</a>
+                              <a class="nav-link" href="membre.php?action=logout" tabindex="-1" aria-disabled="true">Deconnexion</a>
                          </li>
                     <?php endif; ?>
                      <li class="nav-item">

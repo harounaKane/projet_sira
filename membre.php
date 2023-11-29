@@ -2,7 +2,6 @@
 
 include "_inc.php";
 
-
 if( isset($_GET['action']) ){
      $action = $_GET['action'];
      if( $action == "logout"  ){
@@ -60,7 +59,6 @@ if( isset($_GET['type']) ){
 
 $membres = executerRequete("SELECT * FROM membre")->fetchAll();
       
-
 
 //si user pas un admin, retour à l'accueil. Pour empecher l'accès aux pages admin
 if( !isAdmin() ){

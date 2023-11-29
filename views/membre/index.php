@@ -16,7 +16,7 @@
                <?php foreach($membres as $membre): ?>
                     <tr>
                          <td> <?= $membre['prenom']; ?> </td>
-                         <td> <?= $membre['nom']; ?> </td>
+                         <td> <?= htmlentities($membre['nom']); ?> </td>
                          <td> <?= $membre['login']; ?> </td>
                          <td> <?= $membre['tel']; ?> </td>
                          <td> <?= $membre['email']; ?> </td>

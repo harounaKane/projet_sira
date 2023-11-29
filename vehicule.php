@@ -20,10 +20,22 @@ if( isset($_POST['marque']) ){
 
      header("location: vehicule.php");
      exit;
-}
 
-$res = executerRequete("SELECT vehicule.*, nom AS agence FROM vehicule, agence WHERE id_agence = agence");
-$vehicules = $res->fetchAll();
+}else if( isset($_POST['filtreAgence']) ){
+     $res = executerRequete("SELECT vehicule.*, nom AS agence FROM vehicule, agence WHERE id_agence = agence AND id_agence = :filtre", ["filtre" => $_POST['filtreAgence']]);
+
+     $vehicules = $res->fetchAll();
+
+}else if( isset($_GET['action']) && $_GET['action'] == "filtre" ){
+     $res = executerRequete("SELECT vehicule.*, nom AS agence FROM vehicule, agence WHERE id_agence = agence AND id_agence = :filtre", ["filtre" => $_GET['id_agence']]);
+
+     $vehicules = $res->fetchAll();
+
+}
+else{
+     $res = executerRequete("SELECT vehicule.*, nom AS agence FROM vehicule, agence WHERE id_agence = agence");
+     $vehicules = $res->fetchAll();
+}
 
 //RECUP AGENCE POUR FORMULAIRE D'AJOUT DE VEHICULE
 $res = executerRequete("SELECT * FROM agence");

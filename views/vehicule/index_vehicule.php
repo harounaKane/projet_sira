@@ -1,5 +1,27 @@
      
      <main class="container-fluid">
+
+          <form action="vehicule.php" method="post" class="col-2 mb-4 d-flex">
+               <select name="filtreAgence" class="form-select">
+                    <option value="">  -- filtrer par agence</option>
+                    <?php foreach($agences as $agence): ?>
+                         <option value="<?= $agence['id_agence']; ?>" class="form-control"><?= $agence['nom']; ?></option>
+                    <?php endforeach; ?>
+               </select>
+               <button type="submit" class="btn btn-primary">OK</button>
+          </form>
+
+          <div class="col-2 mb-4">
+               <select name="filtreAgence" id="filtre" class="form-select">
+                    <option value="">  -- filtrer par agence</option>
+                    <?php foreach($agences as $agence): ?>
+                         <option value="<?= $agence['id_agence']; ?>" class="form-control" href="vehicule.php?action=filtre&id_agence=<?= $agence['id_agence']; ?>"><?= $agence['nom']; ?></option>
+                    <?php endforeach; ?>
+               </select>
+
+          </div>
+          
+
           <table class="table table-striped table-hover table-sm table-bordered">
                <tr class="table-dark">
                     <th>Id Véhicule</th>
@@ -33,3 +55,9 @@
           <?php include "views/vehicule/form.php"; ?>
 
      </main>
+
+     <script>
+          document.getElementById("filtre").onchange = function(){
+               window.location.href = this.children[this.selectedIndex].getAttribute("href")
+          }
+     </script>

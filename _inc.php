@@ -14,6 +14,11 @@ function executerRequete($query, $data = array()){
  
      $statement = $pdo->prepare($query);
 
+
+     foreach($data as $key => $value){
+          echo $data[$key] = htmlentities($value);
+     }
+
      $statement->execute($data);
 
      return $statement;
@@ -31,7 +36,6 @@ function inscription($data){
                VALUES(NULL, :prenom, :nom, :log, :mdp, :tel, :mail, :adrr, :cp, :ville, :statut, now())";
 
           extract($data);
-          var_dump($data);
           executerRequete($query, [
                "prenom"  => $prenom,
                "nom"     => $nom,
@@ -53,7 +57,7 @@ function inscription($data){
 function connexion($login, $mdp){
      $query = "SELECT * FROM membre WHERE login = :login";
      
-     $res = executerRequete($query, ['login' => $login]);
+     $res = executerRequete($query, array('login' => $login));
 
      //si le login est correct
      if( $res->rowCount() != 0 ){
