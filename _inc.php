@@ -16,7 +16,7 @@ function executerRequete($query, $data = array()){
 
 
      foreach($data as $key => $value){
-          echo $data[$key] = htmlentities($value);
+          $data[$key] = htmlentities($value);
      }
 
      $statement->execute($data);

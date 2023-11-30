@@ -48,6 +48,19 @@
                               </li>
                          </ul>
                          </li>
+                         <li class="nav-item dropdown">
+                                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                   Stat
+                              </a>
+                              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                   <li>
+                                        <a class="dropdown-item" href="stat.php?action=statVehicule">Véhicule en location</a>
+                                   </li>
+                                   <li>
+                                        <a class="dropdown-item" href="stat.php?action=statAgence">Réservation par Agence</a>
+                                   </li>
+                              </ul>
+                         </li>
                     <?php endif; ?>
                     <?php if( isConnected() ): ?>
                          <li class="nav-item">
@@ -131,6 +144,7 @@
      
                          <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                          <button name="inscription" value="inscription" type="submit" class="btn btn-primary">Envoyer</button>
+
                     </form>
               </div>
               <div class="modal-footer">
@@ -149,7 +163,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body">
-                    <form action="membre.php" method="post">
+                    <form id="annuler" action="membre.php" method="post">
                          <div class="row mb-3">
                               <div class="form-group col-6">
                                    <label for="">Login</label>
@@ -165,6 +179,9 @@
      
                          <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                          <button name="connexion" value="connexion" type="submit" class="btn btn-primary">Envoyer</button>
+
+                         <a href="" class="noCompte" data-bs-toggle="modal" data-bs-target="#logonModal">S'inscrire si pas de compte</a>
+
                     </form>
               </div>
               <div class="modal-footer">
@@ -172,3 +189,10 @@
             </div>
           </div>
         </div>
+
+        <script>
+          document.getElementsByClassName("noCompte")[0].addEventListener('click', () => {
+               document.getElementById("loginModal").style.display = "none";
+              // document.getElementById("annuler").submit();
+          })
+        </script>
