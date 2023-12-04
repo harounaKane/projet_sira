@@ -10,7 +10,6 @@ if( isset($_GET['action']) ){
                 ON location.id_vehicule = vehicule.id_vehicule
                 INNER JOIN agence
                 ON agence.id_agence = location.id_agence
-                WHERE dateFin >= now()
                 GROUP BY location.id_vehicule ";
           $res = executerRequete($q);
 

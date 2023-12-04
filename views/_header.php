@@ -38,7 +38,7 @@
                                    <a class="dropdown-item" href="membre.php?action=membre">Membre</a>
                               </li>
                               <li>
-                                   <a class="dropdown-item" href="agence.php?action=agence">Agence</a>
+                                   <a class="dropdown-item" href="agence.php">Agence</a>
                               </li>
                               <li>
                                    <a class="dropdown-item" href="vehicule.php">Véhicule</a>

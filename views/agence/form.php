@@ -1,6 +1,6 @@
 
-<form action="" method="post" enctype="multipart/form-data">
-     <input type="hidden" name="id_agence" value="<?= $agencetoUp['id_membre'] ?? ''; ?>">
+<form action="" method="post" enctype="multipart/form-data" id="am">
+     <input type="hidden" name="id_agence" value="<?= $agencetoUp['id_agence'] ?? ''; ?>">
      <div class="row mb-3">
           <div class="form-group col-6">
                <label for="">Nom</label>
@@ -35,6 +35,12 @@
           <div class="form-group col-6">
                <label for="">Image</label>
                <input id="file" type="file" onchange="prevImg(this.files);" name="image" accept="image/*" class="form-control">
+
+               <?php if( !empty($agencetoUp['image']) ): ?>
+                    <img src="public/img/agence/<?= $agencetoUp['image']; ?>" alt="" class="img-fluid w-25 mt-2">
+                    <input type="hidden" name="img_actuelle" value="<?= $agencetoUp['image']; ?>">
+               <?php endif; ?>
+
           </div>
 
           <div class="form-group col-6">

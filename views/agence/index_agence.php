@@ -26,8 +26,8 @@
                          <td> <?= $agence['cp']; ?> </td>
                          <td> <?= $agence['ville']; ?> </td>
                          <td>
-                              <a href="?action=agence&type=update&id=<?= $agence['id_agence']; ?>">Modifier</a>
-                              <a href="?action=agence&type=delete&id=<?= $agence['id_agence']; ?>">Supprimer</a>
+                              <a href="agence.php?action=update&id=<?= $agence['id_agence']; ?>#am">Modifier</a>
+                              <a href="?action=delete&id=<?= $agence['id_agence']; ?>">Supprimer</a>
                          </td>
                     </tr>
                <?php endforeach; ?>
