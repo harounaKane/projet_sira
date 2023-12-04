@@ -3,9 +3,20 @@
 include "_inc.php";
 
 if( isset($_GET['id_vehicule'])){
-     $res = executerRequete("SELECT vehicule.*, nom, ville FROM vehicule, agence WHERE id_agence = agence AND id_vehicule = :id_v", ["id_v" => $_GET['id_vehicule']]);
+     $res = executerRequete("SELECT 
+     v.*, nom, ville, dateFin 
+     FROM vehicule v
+     LEFT JOIN location l
+     ON v.id_vehicule = l.id_vehicule  
+     INNER JOIN agence a 
+     ON a.id_agence = agence 
+     AND v.id_vehicule = :id_v", [
+          "id_v" => $_GET['id_vehicule']
+     ]);
 
      $vehicule = $res->fetch();
+
+     var_dump($vehicule);
 
      if( isset($_POST['dateDebut']) ){
           extract($_POST);
@@ -31,13 +42,3 @@ include "views/_header.php";
 include "views/location/vueLouer.php";
 
 include "views/_footer.html";
-
-
-function nbJour($dd, $df){
-    
-     $d = strtotime($dd);
-     $f = strtotime($df);
-     $j = $f - $d;
-     return $j / 1000 * 60 *60*24;
-}
-

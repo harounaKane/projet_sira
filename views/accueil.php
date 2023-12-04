@@ -3,7 +3,12 @@
           <div class="row">
                <?php foreach($vehicules as $vehicule): ?>
                     <div class="card col-3 m-2 p-0">
-                         <h5 class="card-title"><?= $vehicule['marque'] ?></h5>
+                         <h5 class="card-title">
+                              <?= $vehicule['marque'] ?>
+                              <span class="badge bg-primary">
+                                   <?= $vehicule['loc'] ?>
+                              </span>
+                         </h5>
                          <img class="card-img-top" src="public/img/vehicule/<?= $vehicule['image'] ?>" alt="">
                          <div class="card-body">
                               <p class="card-text">

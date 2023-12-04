@@ -44,7 +44,7 @@
                                    <a class="dropdown-item" href="vehicule.php">Véhicule</a>
                               </li>
                               <li>
-                                   <a class="dropdown-item" href="?action=location">Location</a>
+                                   <a class="dropdown-item" href="location.php">Location</a>
                               </li>
                          </ul>
                          </li>

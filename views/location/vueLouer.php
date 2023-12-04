@@ -18,6 +18,11 @@
                </div>
 
                <form action="" method="post">
+
+                    <div>
+                         condition
+                    </div>
+
                     <input type="hidden" name="id_vehicule" value="<?= $vehicule['id_vehicule'] ?>">
                     <input type="hidden" name="id_agence" value="<?= $vehicule['agence'] ?>">
                     <input type="hidden" name="id_client" value="<?= $_SESSION['user']['id_membre'] ?? '' ?>">

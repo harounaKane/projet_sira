@@ -2,7 +2,19 @@
 
 include "_inc.php";
 
-$res = executerRequete("SELECT vehicule.*, nom, ville FROM vehicule, agence WHERE id_agence = agence");
+$res = executerRequete("SELECT 
+                         COUNT(*) AS loc,
+                         vehicule.*, 
+                         nom, 
+                         ville, dateFin 
+                    FROM vehicule 
+                    LEFT JOIN location 
+                    ON vehicule.id_vehicule = location.id_vehicule
+                    INNER JOIN agence 
+                    ON agence.id_agence = agence
+                    GROUP BY vehicule.id_vehicule");
+
+
 $vehicules = $res->fetchAll();
 
 include "views/_header.php";

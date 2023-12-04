@@ -124,3 +124,18 @@ function loadImg($nom, $chemin){
 
      return null;
 }
+
+/**
+ * en paramètre deux dates : début et fin
+ * retourne le nombre de jour.
+ * 
+ * contrainte: fin >= debut
+ */
+function nbJour($dd, $df){
+     $d = strtotime($dd);
+     $f = strtotime($df);
+     
+     $j = $f - $d;
+     $jTime = $j/86400+1;
+     return $jTime;
+}
